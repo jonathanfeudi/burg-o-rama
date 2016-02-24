@@ -1,3 +1,5 @@
+DROP TABLE if exists session;
+DROP TABLE if exists users;
 DROP TABLE if exists cheeses CASCADE;
 DROP TABLE if exists toppings CASCADE;
 DROP TABLE if exists buns CASCADE;
@@ -47,4 +49,18 @@ CREATE TABLE toppings_orders_join (
        order_id integer REFERENCES orders,
        topping_id integer REFERENCES toppings,
        PRIMARY KEY (order_id, topping_id)
+);
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE TABLE users (
+       id SERIAL UNIQUE PRIMARY KEY,
+       email VARCHAR(255),
+       password_digest TEXT
 );

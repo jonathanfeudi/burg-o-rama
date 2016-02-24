@@ -1,0 +1,35 @@
+{
+  "name": "burg-o-rama",
+  "version": "1.0.0",
+  "description": "![Bob's burgers](http://www.themarysue.com/wp-content/uploads/2014/10/bobsburgers.jpg)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanfeudi/burg-o-rama.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathanfeudi/burg-o-rama/issues"
+  },
+  "homepage": "https://github.com/jonathanfeudi/burg-o-rama#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.15.0",
+    "connect-pg-simple": "^3.1.0",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.5",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "pg": "^4.4.6",
+    "pryjs": "^0.1.3",
+    "serve-favicon": "^2.3.0"
+  }
+}
