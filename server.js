@@ -48,6 +48,7 @@ app.use( logger('dev') );
 app.use(methodOverride('_method'));
 
 /*Views*/
+app.set('views', './views');
 app.set('view engine', 'ejs');
 
 //body-parser initialization

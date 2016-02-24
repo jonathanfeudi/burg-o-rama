@@ -10,33 +10,30 @@ DROP TABLE if exists toppings_orders_join CASCADE;
 
 CREATE TABLE cheeses (
        cheese_id serial PRIMARY KEY UNIQUE,
-       name VARCHAR(255),
-       country VARCHAR(255)
+       name VARCHAR(255)
 );
 
 CREATE TABLE toppings (
   topping_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255),
-  type VARCHAR(255)
+  name VARCHAR(255)
 );
 
 CREATE TABLE buns (
   bun_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255),
-  gluten_free BOOLEAN
+  name VARCHAR(255)
 );
 
 CREATE TABLE meats(
   meat_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255),
-  type VARCHAR(255)
+  name VARCHAR(255)
 );
 
 CREATE TABLE orders(
   order_id serial PRIMARY KEY UNIQUE,
+  name VARCHAR(255),
   meat_id  integer REFERENCES meats,
   bun_id integer REFERENCES buns,
-  doneness VARCHAR(255)
+  temperature VARCHAR(255)
 );
 
 CREATE TABLE cheeses_orders_join (

@@ -10,10 +10,12 @@ var pgSession = require('connect-pg-simple');
 // burgers route (collection)
 burgers.route('/')
   .get((req,res)=>res.render('pages/burgers_all'))
-  .post(function(req, res){
-    burgerData.push(req.body);
-    var newID = burgerData.length-1;
-    res.redirect('./burgers/'+ newID)
+  .post(db.createOrder, db.getOrderID, db.addCheeses, function(req, res){
+    res.send(req.body);
+    // burgerData.push(req.body);
+    // var newID = burgerData.length-1;
+    // res.redirect('./burgers/'+ newID)
+    // res.send(req.body);
   });
 
 burgers.get('/new', function(req, res){
