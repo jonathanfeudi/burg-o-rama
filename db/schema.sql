@@ -1,51 +1,51 @@
 DROP TABLE if exists session;
 DROP TABLE if exists users;
-DROP TABLE if exists cheeses CASCADE;
-DROP TABLE if exists toppings CASCADE;
-DROP TABLE if exists buns CASCADE;
-DROP TABLE if exists meats CASCADE;
+DROP TABLE if exists cheese CASCADE;
+DROP TABLE if exists topping CASCADE;
+DROP TABLE if exists bun CASCADE;
+DROP TABLE if exists meat CASCADE;
 DROP TABLE if exists orders CASCADE;
-DROP TABLE if exists cheeses_orders_join CASCADE;
-DROP TABLE if exists toppings_orders_join CASCADE;
+DROP TABLE if exists order_cheese CASCADE;
+DROP TABLE if exists order_topping CASCADE;
 
-CREATE TABLE cheeses (
-       cheese_id serial PRIMARY KEY UNIQUE,
-       name VARCHAR(255)
+CREATE TABLE cheese (
+       cheeseid serial PRIMARY KEY UNIQUE,
+       type VARCHAR(255)
 );
 
-CREATE TABLE toppings (
-  topping_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255)
+CREATE TABLE topping (
+  toppingid serial PRIMARY KEY UNIQUE,
+  type VARCHAR(255)
 );
 
-CREATE TABLE buns (
-  bun_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255)
+CREATE TABLE bun (
+  bunid serial PRIMARY KEY UNIQUE,
+  type VARCHAR(255)
 );
 
-CREATE TABLE meats(
-  meat_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255)
+CREATE TABLE meat(
+  meatid serial PRIMARY KEY UNIQUE,
+  type VARCHAR(255)
 );
 
 CREATE TABLE orders(
-  order_id serial PRIMARY KEY UNIQUE,
+  orderid serial PRIMARY KEY UNIQUE,
   name VARCHAR(255),
-  meat_id  integer REFERENCES meats,
-  bun_id integer REFERENCES buns,
+  meatid  integer REFERENCES meat,
+  bunid integer REFERENCES bun,
   temperature VARCHAR(255)
 );
 
-CREATE TABLE cheeses_orders_join (
-       order_id integer REFERENCES orders,
-       cheese_id integer REFERENCES cheeses,
-       PRIMARY KEY (order_id, cheese_id)
+CREATE TABLE order_cheese (
+       orderid integer REFERENCES orders ON DELETE CASCADE,
+       cheeseid integer REFERENCES cheese,
+       PRIMARY KEY (orderid, cheeseid)
 );
 
-CREATE TABLE toppings_orders_join (
-       order_id integer REFERENCES orders,
-       topping_id integer REFERENCES toppings,
-       PRIMARY KEY (order_id, topping_id)
+CREATE TABLE order_topping (
+       orderid integer REFERENCES orders ON DELETE CASCADE,
+       toppingid integer REFERENCES topping,
+       PRIMARY KEY (orderid, toppingid)
 );
 
 CREATE TABLE "session" (
